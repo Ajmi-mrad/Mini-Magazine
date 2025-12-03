@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLife Magazine</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>TechLife</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" data-page="home" class="nav-link active">Accueil</a></li>
+                <li><a href="#" data-page="articles" class="nav-link">Articles</a></li>
+                <li><a href="#" data-page="tech" class="nav-link">Tech</a></li>
+                <li><a href="#" data-page="lifestyle" class="nav-link">Lifestyle</a></li>
+                <li><a href="#" data-page="contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=600&fit=crop" alt="Tech Innovation">
+                            <div class="carousel-content">
+                                <h1>L'avenir de la technologie</h1>
+                                <p>Découvrez les dernières innovations qui façonnent notre monde</p>
+                                <button class="cta-btn">Lire plus</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop" alt="Data Science">
+                            <div class="carousel-content">
+                                <h1>Intelligence Artificielle</h1>
+                                <p>Comment l'IA révolutionne notre quotidien</p>
+                                <button class="cta-btn">Explorer</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop" alt="Digital Life">
+                            <div class="carousel-content">
+                                <h1>Vie Digitale</h1>
+                                <p>Equilibrer technologie et bien-être au quotidien</p>
+                                <button class="cta-btn">Découvrir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="featured-articles">
+                <div class="container">
+                    <h2>Articles populaires</h2>
+                    <div class="articles-grid">
+                        <article class="article-card" data-id="1">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop" alt="Programmation">
+                            <div class="article-content">
+                                <h3>Le futur du développement web</h3>
+                                <p>Les nouvelles tendances qui révolutionnent le web...</p>
+                                <div class="article-meta">
+                                    <span class="author">Sarah Chen</span>
+                                    <span class="date">15 Nov 2025</span>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="like-btn" data-id="1">
+                                        <i class="far fa-heart"></i>
+                                        <span class="like-count">42</span>
+                                    </button>
+                                    <button class="comment-btn" data-id="1">
+                                        <i class="far fa-comment"></i>
+                                        <span class="comment-count">8</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card" data-id="2">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop" alt="Robotique">
+                            <div class="article-content">
+                                <h3>Robotique et société</h3>
+                                <p>Comment les robots transforment notre quotidien...</p>
+                                <div class="article-meta">
+                                    <span class="author">Marcus Robot</span>
+                                    <span class="date">14 Nov 2025</span>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="like-btn" data-id="2">
+                                        <i class="far fa-heart"></i>
+                                        <span class="like-count">38</span>
+                                    </button>
+                                    <button class="comment-btn" data-id="2">
+                                        <i class="far fa-comment"></i>
+                                        <span class="comment-count">12</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card" data-id="3">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop" alt="Blockchain">
+                            <div class="article-content">
+                                <h3>Blockchain expliquée</h3>
+                                <p>Comprendre la technologie qui change la finance...</p>
+                                <div class="article-meta">
+                                    <span class="author">Alex Crypto</span>
+                                    <span class="date">13 Nov 2025</span>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="like-btn" data-id="3">
+                                        <i class="far fa-heart"></i>
+                                        <span class="like-count">67</span>
+                                    </button>
+                                    <button class="comment-btn" data-id="3">
+                                        <i class="far fa-comment"></i>
+                                        <span class="comment-count">15</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonials">
+                <div class="container">
+                    <h2>Ce que disent nos lecteurs</h2>
+                    <div class="testimonials-slider">
+                        <div class="testimonial active">
+                            <div class="testimonial-content">
+                                <p>"TechLife m'aide à rester à jour avec les dernières innovations. Contenu de qualité !"</p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b332c1cb?w=60&h=60&fit=crop&crop=face" alt="Marie Dubois">
+                                    <div>
+                                        <h4>Marie Dubois</h4>
+                                        <span>Développeuse Full-Stack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"Excellents articles sur l'IA et la robotique. Une ressource indispensable pour ma veille technologique."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Thomas Martin">
+                                    <div>
+                                        <h4>Thomas Martin</h4>
+                                        <span>Ingénieur IA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"Interface moderne et contenu accessible. Parfait pour comprendre les enjeux tech actuels."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Lisa Chen">
+                                    <div>
+                                        <h4>Lisa Chen</h4>
+                                        <span>Product Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="articles" class="page">
+            <div class="container">
+                <h1>Tous les articles</h1>
+                <div class="articles-list">
+                    <div id="articles-content">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech" class="page">
+            <div class="container">
+                <h1>Technologie</h1>
+                <div id="tech-content">
+                </div>
+            </div>
+        </section>
+
+        <section id="lifestyle" class="page">
+            <div class="container">
+                <h1>Lifestyle Digital</h1>
+                <div id="lifestyle-content">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <div class="container">
+                <h1>Nous contacter</h1>
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="info">Demande d'information</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                            <span class="error-message" id="subject-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="error-message" id="message-error"></span>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Envoyer le message</span>
+                            <span class="btn-loading">Envoi en cours...</span>
+                        </button>
+                    </form>
+
+                    <div class="contact-info">
+                        <h3>Informations de contact</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@techlife-magazine.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+216 73 824 918</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sousse Rue 2 mars</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechLife Magazine</h3>
+                    <p>Votre source d'information sur les dernières innovations technologiques et leur impact sur notre vie quotidienne.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#" data-page="home">Accueil</a></li>
+                        <li><a href="#" data-page="articles">Articles</a></li>
+                        <li><a href="#" data-page="tech">Tech</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechLife Magazine. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
