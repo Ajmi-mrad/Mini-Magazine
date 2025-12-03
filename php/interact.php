@@ -11,6 +11,10 @@ $action = $_POST['action'] ?? $_GET['action'] ?? '';
 $articleId = (int)($_POST['article_id'] ?? $_GET['article_id'] ?? 0);
 $redirect = $_POST['redirect'] ?? $_GET['redirect'] ?? '../index.php';
 
+if (strpos($redirect, '../') !== 0 && strpos($redirect, 'http') !== 0) {
+    $redirect = '../' . $redirect;
+}
+
 if (strpos($redirect, 'http') === 0 && strpos($redirect, $_SERVER['HTTP_HOST']) === false) {
     $redirect = '../index.php';
 }
@@ -53,7 +57,6 @@ function handleLike($pdo, $articleId) {
     
     if ($stmt->fetch()) {
         return handleUnlike($pdo, $articleId);
-    }
     }
     
     $stmt = $pdo->prepare("INSERT INTO likes (article_id, session_id) VALUES (?, ?)");
