@@ -1,8 +1,3 @@
-/**
- * TechLife Magazine - JavaScript Application
- * Handles UI interactions and JS→PHP communication via form submissions
- */
-
 class Magazine {
     constructor() {
         this.currentSlide = 0;
@@ -25,10 +20,6 @@ class Magazine {
         this.setupCommentModal();
     }
 
-    // ==========================================
-    // CAROUSEL
-    // ==========================================
-    
     setupCarousel() {
         const prevBtn = document.querySelector('.carousel-prev');
         const nextBtn = document.querySelector('.carousel-next');
@@ -77,10 +68,6 @@ class Magazine {
         });
     }
 
-    // ==========================================
-    // SCROLL BEHAVIOR
-    // ==========================================
-    
     setupScrollBehavior() {
         let ticking = false;
 
@@ -124,26 +111,17 @@ class Magazine {
         });
     }
 
-    // ==========================================
-    // LIKE SYSTEM - JS → PHP Communication
-    // JavaScript intercepts click, adds animation, then submits form to PHP
-    // ==========================================
-    
     setupLikeSystem() {
-        // Intercept like button clicks for animation before form submission
         document.addEventListener('click', (e) => {
             const likeBtn = e.target.closest('.like-btn');
             if (likeBtn) {
-                // Prevent default form submission temporarily for animation
                 const form = likeBtn.closest('.like-form');
                 
                 if (form) {
                     e.preventDefault();
                     
-                    // Add click animation
                     likeBtn.style.transform = 'scale(0.9)';
                     
-                    // Update UI optimistically
                     const isLiked = likeBtn.classList.contains('liked');
                     const countSpan = likeBtn.querySelector('.like-count');
                     const icon = likeBtn.querySelector('i');
@@ -160,10 +138,8 @@ class Magazine {
                     }
                     countSpan.textContent = count;
                     
-                    // Reset animation and submit form to PHP
                     setTimeout(() => {
                         likeBtn.style.transform = '';
-                        // JavaScript submits form to PHP script
                         form.submit();
                     }, 200);
                 }
@@ -171,13 +147,7 @@ class Magazine {
         });
     }
 
-    // ==========================================
-    // COMMENT MODAL - JS → PHP Communication
-    // JavaScript opens modal, user fills form, JS validates, then submits to PHP
-    // ==========================================
-    
     setupCommentModal() {
-        // Comment form validation before submission to PHP
         const commentForm = document.getElementById('comment-form');
         if (commentForm) {
             commentForm.addEventListener('submit', (e) => {
@@ -186,7 +156,6 @@ class Magazine {
                 
                 let isValid = true;
                 
-                // JavaScript validates before allowing form submission to PHP
                 if (!authorName.value.trim() || authorName.value.trim().length < 2) {
                     isValid = false;
                     authorName.classList.add('error');
@@ -208,16 +177,11 @@ class Magazine {
                     return false;
                 }
                 
-                // If valid, form submits to PHP (JS → PHP communication)
                 this.showNotification('Envoi du commentaire...', 'success');
             });
         }
     }
 
-    // ==========================================
-    // TESTIMONIALS SLIDER
-    // ==========================================
-    
     setupTestimonials() {
         this.startTestimonialSlider();
     }
@@ -233,11 +197,6 @@ class Magazine {
         }, 4000);
     }
 
-    // ==========================================
-    // CONTACT FORM VALIDATION - JS → PHP Communication
-    // JavaScript validates form fields, then allows submission to PHP
-    // ==========================================
-    
     setupFormValidation() {
         const form = document.getElementById('contact-form');
         if (!form) return;
@@ -249,7 +208,6 @@ class Magazine {
             input.addEventListener('input', () => this.clearFieldError(input));
         });
 
-        // JavaScript intercepts form submission, validates, then submits to PHP
         form.addEventListener('submit', (e) => this.handleFormSubmit(e));
     }
 
@@ -320,7 +278,6 @@ class Magazine {
         let isFormValid = true;
         const fields = form.querySelectorAll('input, select, textarea');
         
-        // JavaScript validates all fields before submission to PHP
         fields.forEach(field => {
             if (field.name && !this.validateField(field)) {
                 isFormValid = false;
@@ -333,24 +290,16 @@ class Magazine {
             return false;
         }
 
-        // Show loading state
         if (submitBtn) {
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
         }
         
-        // If valid, form submits to PHP (JS → PHP communication)
-        // The PHP script will handle the data and redirect back
         this.showNotification('Envoi en cours...', 'success');
         
-        // Form will submit naturally to php/contact.php
         return true;
     }
 
-    // ==========================================
-    // MOBILE MENU
-    // ==========================================
-    
     setupMobileMenu() {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -380,10 +329,6 @@ class Magazine {
         navMenu.classList.toggle('active');
     }
 
-    // ==========================================
-    // NOTIFICATIONS
-    // ==========================================
-    
     showNotification(message, type = 'info') {
         const existingMessage = document.querySelector('.form-message');
         if (existingMessage) {
@@ -426,10 +371,6 @@ class Magazine {
     }
 }
 
-// ==========================================
-// GLOBAL FUNCTIONS FOR COMMENT MODAL
-// ==========================================
-
 function openCommentModal(articleId) {
     const modal = document.getElementById('comment-modal');
     const articleIdInput = document.getElementById('comment-article-id');
@@ -447,13 +388,11 @@ function closeCommentModal() {
         modal.style.display = 'none';
         document.body.style.overflow = '';
         
-        // Reset form
         const form = document.getElementById('comment-form');
         if (form) form.reset();
     }
 }
 
-// Close modal when clicking outside
 document.addEventListener('click', (e) => {
     const modal = document.getElementById('comment-modal');
     if (e.target === modal) {
@@ -461,16 +400,11 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close modal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeCommentModal();
     }
 });
-
-// ==========================================
-// INITIALIZE
-// ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
     new Magazine();

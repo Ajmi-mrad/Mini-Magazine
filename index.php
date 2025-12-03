@@ -1,9 +1,4 @@
 <?php
-/**
- * TechLife Magazine - Main Page
- * Dynamic PHP version with database integration
- */
-
 require_once 'php/db.php';
 
 // Get current page

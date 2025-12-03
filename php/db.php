@@ -1,30 +1,18 @@
 <?php
-/**
- * Database Connection Configuration
- * TechLife Magazine
- */
-
-// Database configuration
 define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'techlife_magazine');
 define('DB_USER', 'root');
 define('DB_PASS', 'root123');
 define('DB_CHARSET', 'utf8mb4');
 
-// Start session for tracking likes
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Generate unique session ID for like tracking
 if (!isset($_SESSION['visitor_id'])) {
     $_SESSION['visitor_id'] = bin2hex(random_bytes(16));
 }
 
-/**
- * Get PDO database connection
- * @return PDO|null
- */
 function getDBConnection() {
     static $pdo = null;
     
@@ -46,21 +34,10 @@ function getDBConnection() {
     return $pdo;
 }
 
-/**
- * Sanitize output for HTML
- * @param string $data
- * @return string
- */
 function h($data) {
     return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 }
 
-/**
- * Get all articles with optional category filter
- * @param string|null $category
- * @param bool $featuredOnly
- * @return array
- */
 function getArticles($category = null, $featuredOnly = false) {
     $pdo = getDBConnection();
     if (!$pdo) return [];
@@ -91,11 +68,6 @@ function getArticles($category = null, $featuredOnly = false) {
     }
 }
 
-/**
- * Get single article by ID
- * @param int $id
- * @return array|null
- */
 function getArticleById($id) {
     $pdo = getDBConnection();
     if (!$pdo) return null;
@@ -112,11 +84,6 @@ function getArticleById($id) {
     }
 }
 
-/**
- * Get comments for an article
- * @param int $articleId
- * @return array
- */
 function getComments($articleId) {
     $pdo = getDBConnection();
     if (!$pdo) return [];
@@ -131,11 +98,6 @@ function getComments($articleId) {
     }
 }
 
-/**
- * Check if current session has liked an article
- * @param int $articleId
- * @return bool
- */
 function hasLiked($articleId) {
     $pdo = getDBConnection();
     if (!$pdo) return false;
@@ -152,11 +114,6 @@ function hasLiked($articleId) {
     }
 }
 
-/**
- * Format date to French format
- * @param string $date
- * @return string
- */
 function formatDate($date) {
     $months = [
         1 => 'Jan', 2 => 'Fév', 3 => 'Mar', 4 => 'Avr', 5 => 'Mai', 6 => 'Juin',

@@ -1,25 +1,15 @@
 <?php
-/**
- * Get Articles API
- * Returns articles data for JavaScript to read via iframe
- * TechLife Magazine
- */
-
 require_once 'db.php';
 
-// Get parameters
 $category = $_GET['category'] ?? null;
 $featured = isset($_GET['featured']) && $_GET['featured'] === '1';
 $format = $_GET['format'] ?? 'html';
 
-// Fetch articles
 $articles = getArticles($category, $featured);
 
-// If JSON format requested (for iframe reading)
 if ($format === 'json') {
     header('Content-Type: application/json; charset=utf-8');
     
-    // Add hasLiked status to each article
     foreach ($articles as &$article) {
         $article['hasLiked'] = hasLiked($article['id']);
         $article['formatted_date'] = formatDate($article['created_at']);
@@ -29,7 +19,6 @@ if ($format === 'json') {
     exit;
 }
 
-// HTML format - render article cards directly
 ?>
 <!DOCTYPE html>
 <html>

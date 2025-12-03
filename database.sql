@@ -1,10 +1,6 @@
--- TechLife Magazine Database Schema
--- Run this script in your MySQL/MariaDB to create the database
-
 CREATE DATABASE IF NOT EXISTS techlife_magazine CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE techlife_magazine;
 
--- Articles table
 CREATE TABLE IF NOT EXISTS articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -19,7 +15,6 @@ CREATE TABLE IF NOT EXISTS articles (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- Likes table (track individual likes)
 CREATE TABLE IF NOT EXISTS likes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     article_id INT NOT NULL,
@@ -29,7 +24,6 @@ CREATE TABLE IF NOT EXISTS likes (
     UNIQUE KEY unique_like (article_id, session_id)
 ) ENGINE=InnoDB;
 
--- Comments table
 CREATE TABLE IF NOT EXISTS comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     article_id INT NOT NULL,
@@ -39,7 +33,6 @@ CREATE TABLE IF NOT EXISTS comments (
     FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Contact messages table
 CREATE TABLE IF NOT EXISTS contacts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -50,7 +43,6 @@ CREATE TABLE IF NOT EXISTS contacts (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- Insert sample articles
 INSERT INTO articles (title, excerpt, content, author, category, image_url, featured, likes_count) VALUES
 ('Le futur du développement web', 'Les nouvelles tendances qui révolutionnent le web...', 'Le développement web évolue rapidement avec l''arrivée de nouvelles technologies comme WebAssembly, les Progressive Web Apps et les frameworks modernes. Ces innovations transforment la façon dont nous construisons et interagissons avec les applications web.', 'Sarah Chen', 'articles', 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop', 1, 42),
 ('Robotique et société', 'Comment les robots transforment notre quotidien...', 'Les robots ne sont plus de la science-fiction. Ils s''intègrent progressivement dans notre vie quotidienne, de l''industrie manufacturière aux soins de santé, en passant par l''assistance à domicile.', 'Marcus Robot', 'tech', 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop', 1, 38),
@@ -65,7 +57,6 @@ INSERT INTO articles (title, excerpt, content, author, category, image_url, feat
 ('Détox Digitale', 'Comment se déconnecter pour mieux se reconnecter.', 'La détox digitale est devenue nécessaire pour préserver notre santé mentale et nos relations sociales dans un monde dominé par les écrans.', 'Wellness Coach', 'lifestyle', 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=250&fit=crop', 0, 87),
 ('Smart Home 2025', 'La maison connectée de demain.', 'Les technologies domotiques évoluent rapidement, transformant nos maisons en espaces intelligents qui s''adaptent à nos besoins et habitudes.', 'Tech Home', 'lifestyle', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=250&fit=crop', 0, 112);
 
--- Insert sample comments
 INSERT INTO comments (article_id, author_name, content) VALUES
 (1, 'Jean Dupont', 'Excellent article, très informatif !'),
 (1, 'Marie Martin', 'J''ai appris beaucoup de choses, merci !'),

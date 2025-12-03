@@ -1,9 +1,4 @@
 <?php
-/**
- * TechLife Magazine - Administration Panel
- * CRUD interface for managing articles
- */
-
 require_once 'php/db.php';
 
 $pdo = getDBConnection();
@@ -271,7 +266,6 @@ if ($action === 'edit' && $editId > 0) {
 
     <script src="js/app.js"></script>
     <script>
-        // Image preview functionality
         document.getElementById('image_url')?.addEventListener('input', function() {
             const preview = document.getElementById('image-preview');
             const url = this.value.trim();
@@ -283,17 +277,14 @@ if ($action === 'edit' && $editId > 0) {
             }
         });
 
-        // Delete confirmation - JS validates before form submission to PHP
         function confirmDelete(form) {
             const confirmed = confirm('Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.');
             if (confirmed) {
-                // JavaScript validates, then allows form to submit to PHP
                 return true;
             }
             return false;
         }
 
-        // Form validation before submit - JS → PHP communication
         document.getElementById('article-form')?.addEventListener('submit', function(e) {
             let isValid = true;
             const requiredFields = ['title', 'author', 'excerpt', 'image_url'];
@@ -321,7 +312,6 @@ if ($action === 'edit' && $editId > 0) {
                 e.preventDefault();
                 alert('Veuillez remplir tous les champs obligatoires.');
             }
-            // If valid, form submits to PHP (JS → PHP communication)
         });
     </script>
 </body>
